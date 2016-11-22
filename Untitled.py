@@ -49,21 +49,22 @@ import re
 #     ("$$31", None),
 # ])
 #
+#^\$\d+((\,\d{3})?)*(\.\d{2})?$
+rinput = "$456,555,555.55"
+a = 123
+#print(format(amount, '.2f'))
 
-# rinput = "$400"
-# a = 123
-# #print(format(amount, '.2f'))
-#
-# def money(rinput):
-#     x = re.findall(r'^\$\d+\.\d{2}$|\$\d+$', rinput)
-#     try:
-#         amount = x[0][1:]
-#     except:
-#         return None
-#     print({"currency": "$", "amount": amount})
-#
-#
-# money(rinput)
+def money(rinput):
+    x = re.findall(r'^\$\d+(\,\d{3})*?\.?\d{2}?', rinput)
+    print(x)
+    try:
+        amount = x[0][1:]
+    except:
+        return None
+    print({"currency": "$", "amount": amount})
+
+
+money(rinput)
 #
 
 # @params("input,expected", [
@@ -148,8 +149,3 @@ import re
 #
 #
 # address(rinput)
-test = "0"
-
-
-def binary(test):
-    print(re.match(r'[01]*', test))
